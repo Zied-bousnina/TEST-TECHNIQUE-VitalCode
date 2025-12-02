@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+TEST TECHNIQUE – VitalCode
+============================================================
 
-## Getting Started
+Réalisé par Zied Bousnina. Démo locale visible sur `/` (cartes utilisateurs + encart Firebase) et API sur `/api/hello`.
 
-First, run the development server:
+Prérequis rapides
+-----------------
+- Node.js 18+ et npm installés.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Lancement du projet
+-------------------
+1) Installer les dépendances : `npm install`
+2) Démarrer le serveur de dev : `npm run dev`
+3) Ouvrir `http://localhost:3000` pour voir les cartes et tester `/api/hello`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Exercice 1 — Composant Next.js + Tailwind
+------------------------------------------------------
+- Chemin : `app/components/UserCard.tsx`, utilisé dans `app/page.tsx`.
+- Affiche nom + email, avatar initiales, style Tailwind simple, responsive (grille 1→3 colonnes).
+- Section principale pleine largeur pour voir trois cartes sur une ligne quand l’espace le permet.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Exercice 2 — Route API
+----------------------------------
+- Chemin : `app/api/hello/route.ts`
+- GET retourne : `{ "message": "Hello VitalCode" }`
 
-## Learn More
+Exercice 3 — Firebase
+---------------------------------
 
-To learn more about Next.js, take a look at the following resources:
+1) Installer `firebase`, créer un dossier `lib` et un fichier `firebase.ts` avec `initializeApp` configuré via variables d’environnement.
+2) Exporter `auth = getAuth(getApps().length ? getApp() : initializeApp(config))`.
+3) Dans les composants client, importer `auth` et utiliser `signInWithEmailAndPassword` / `onAuthStateChanged`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
